@@ -46,66 +46,69 @@ import cucumber.api.java.en.Given
 import cucumber.api.java.en.Then
 import cucumber.api.java.en.When
 
+
 class Individu {
+
+
+	//	def path = RunConfiguration.getProjectDir().replace('/', '\\')
+	//	def excel = ExcelKeywords.getExcelSheetByName('Data Files/' + GlobalVariable.Data, 'Login')
+
+	@Given("I open the Url")
+	def IOpenTheUrl() {
 	
-	
-		//	def path = RunConfiguration.getProjectDir().replace('/', '\\')
-		//	def excel = ExcelKeywords.getExcelSheetByName('Data Files/' + GlobalVariable.Data, 'Login')
-	
-		@Given("I open the Url")
-		def IOpenTheUrl() {
-	
-			'Setup Driver Browser'
-			RunConfiguration.setWebDriverPreferencesProperty('args', ['window-size=1920,1080'])
-	
-			//		Map<String, Object> chromePrefs = new HashMap<String, Object>();
-			//		chromePrefs.put("profile.default_content_setting_values.notifications", 2);
-			//		RunConfiguration.setWebDriverPreferencesProperty('prefs', chromePrefs);
-	
-			'Opening Browser'
-			WebUI.openBrowser(GlobalVariable.Url)
-			
-	
-			'Deleting Cookies'
-			WebUI.deleteAllCookies()
-		}
-	
-		@When("I choice individu on loan application form")
-		def ChoiceLoanApplication() {
-			'Choise Individu'
-			WebUI.click(findTestObject('Object Repository/Page_Pembiayaan Modal Usaha - Maucash - Maucash/arrow-pengajuan-pinjaman'))
-			WebUI.click(findTestObject('Object Repository/Page_Pembiayaan Modal Usaha - Maucash - Maucash/pengajuan-Individu'))
-		}
-	
-		@And("I write phone number form")
-		def WritePhoneNumber() {
-			'Write Phone Number'
-			WebUI.setText(findTestObject('Object Repository/Page_Pembiayaan Modal Usaha - Maucash - Maucash/input_Nomor Handphone Pemohon'), '086773647348')
-		}
-	
-		@And("I write otp code form")
-		def WriteOTP() {
-			'Click Send OTP'
-			WebUI.click(findTestObject('Object Repository/Page_Pembiayaan Modal Usaha - Maucash - Maucash/button_Kirim OTP'))
-	
-			WebUI.delay(1)
-			
-			'Input OTP'
-			WebUI.setText(findTestObject('Object Repository/Page_Pembiayaan Modal Usaha - Maucash - Maucash/input_Kode OTP'), '8888')
-		}
-	
-		@And("I click Lanjut button")
-		def ClickLanjut() {
-			'Click Lanjut'
-			WebUI.click(findTestObject('Object Repository/Page_Pembiayaan Modal Usaha - Maucash - Maucash/button_LANJUT'))
-		}
-	
-		@Then("verify the Pertanyaan Pembiyaan in step")
-		def VerifyPembiayaan() {
-			'Verify Pertanyaan Pembiayaan'
-			
-			WebUI.verifyElementPresent(findTestObject('Object Repository/Page_Pembiayaan Modal Usaha - Maucash - Maucash/body_Formulir Pembiayaan Modal Usaha    123_046b86'),3)
-			
-			WebUI.takeScreenshot()
-		}
+
+		'Setup Driver Browser'
+		RunConfiguration.setWebDriverPreferencesProperty('args', ['window-size=1920,1080'])
+		
+		//		Map<String, Object> chromePrefs = new HashMap<String, Object>();
+		//		chromePrefs.put("profile.default_content_setting_values.notifications", 2);
+		//		RunConfiguration.setWebDriverPreferencesProperty('prefs', chromePrefs);
+
+		'Opening Browser'
+		WebUI.openBrowser(GlobalVariable.Url)
+		
+		WebUI.maximizeWindow()
+
+		'Deleting Cookies'
+		WebUI.deleteAllCookies()
+	}
+
+	@When("I choice individu on loan application form")
+	def ChoiceLoanApplication() {
+		'Choise Individu'
+		WebUI.click(findTestObject('Object Repository/Page_Pembiayaan Modal Usaha - Maucash - Maucash/arrow-pengajuan-pinjaman'))
+		WebUI.click(findTestObject('Object Repository/Page_Pembiayaan Modal Usaha - Maucash - Maucash/pengajuan-Individu'))
+	}
+
+	@And("I write phone number form")
+	def WritePhoneNumber() {
+		'Write Phone Number'
+		WebUI.setText(findTestObject('Object Repository/Page_Pembiayaan Modal Usaha - Maucash - Maucash/input_Nomor Handphone Pemohon'), '086773647308')
+	}
+
+	@And("I write otp code form")
+	def WriteOTP() {
+		'Click Send OTP'
+		WebUI.click(findTestObject('Object Repository/Page_Pembiayaan Modal Usaha - Maucash - Maucash/button_Kirim OTP'))
+
+		WebUI.delay(1)
+
+		'Input OTP'
+		WebUI.setText(findTestObject('Object Repository/Page_Pembiayaan Modal Usaha - Maucash - Maucash/input_Kode OTP'), '8888')
+	}
+
+	@And("I click Lanjut button")
+	def ClickLanjut() {
+		'Click Lanjut'
+		WebUI.click(findTestObject('Object Repository/Page_Pembiayaan Modal Usaha - Maucash - Maucash/button_LANJUT'))
+	}
+
+	@Then("verify the Pertanyaan Pembiyaan in step")
+	def VerifyPembiayaan() {
+		'Verify Pertanyaan Pembiayaan'
+
+		WebUI.verifyElementPresent(findTestObject('Object Repository/Page_Pembiayaan Modal Usaha - Maucash - Maucash/body_Formulir Pembiayaan Modal Usaha    123_046b86'),3)
+
+		WebUI.takeScreenshot()
+	}
 }
